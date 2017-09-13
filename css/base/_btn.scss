@@ -1,0 +1,110 @@
+/* ===========================================================
+
+	Base - Btn
+
+=========================================================== */
+
+button {
+	border-radius: $ut-radius;
+	transition: box-shadow $ut-speed $ut-timing-func-1;
+
+	&:focus {
+		box-shadow: 0 0 0 rem(4px) $co-green-1;
+		outline: none;
+	}
+}
+
+.b-btn {
+	background-color: transparent;
+	border: rem(1px) solid $co-dark-2;
+	border-radius: $ut-radius;
+	color: $co-dark-2;
+    cursor: pointer;
+    display: inline-block;
+	font-weight: $fw-bold;
+    line-height: 1;
+    padding: $un-sm $un-lg;
+	position: relative;
+    transition: box-shadow $ut-speed $ut-timing-func-1,
+				transform $ut-speed $ut-timing-func-1;
+
+	&::after {
+		background-color: $co-green-1;
+		bottom: 0;
+		border-radius: $ut-radius;
+		content: '';
+		height: auto;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		transform: translate(rem(3px), rem(3px));
+		transition: background-color $ut-speed * 1.5 $ut-timing-func-1,
+					bottom $ut-speed $ut-timing-func-1,
+					right $ut-speed $ut-timing-func-1,
+					transform $ut-speed $ut-timing-func-1;
+		width: auto;
+		z-index: -1;
+	}
+
+    &:hover {
+		&::after {
+			transform: translate(0);
+		}
+    }
+
+	&:active {
+		transform: $ut-active-scale;
+	}
+
+	@include respond-min($mq-sm) {
+		&::after {
+			transform: translate(rem(4px), rem(4px));
+		}
+	}
+}
+
+.b-btn--sec {
+	&::after {
+		background-color: $co-green-2;
+	}
+}
+
+
+.b-btn--square {
+	height: rem(40px);
+	padding: 0;
+	width: rem(40px);
+
+	.b-btn__inner {
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	.b-btn__icon {
+		vertical-align: top;
+	}
+
+	@include respond-min($mq-sm) {
+		height: rem(52px);
+		width: rem(52px);
+	}
+
+	@include respond-min($mq-md) {
+		height: rem(54px);
+		width: rem(54px);
+	}
+}
+
+.b-btn--skiplink {
+	bottom: $un-xl;
+	position: fixed;
+	left: -100%; // Moves button off screen
+	z-index: 100;
+
+	&:focus {
+		left: $un-xl; // Moves button back on screen
+	}
+}

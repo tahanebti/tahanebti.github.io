@@ -1,0 +1,71 @@
+/* ===========================================================
+
+	Modules - Header
+
+=========================================================== */
+
+.m-header {
+	left: 0;
+	padding: $un-lg;
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 100;
+
+	@include respond-min($mq-md) {
+		padding: $un-xl $un-xxl;
+	}
+
+	@include respond-max($mq-lg) {
+		transition: transform $ut-speed $ut-timing-func-1;
+
+		&.is-scrolling-down {
+			transform: translateY(-100%);
+		}
+
+		.is-nav-active &,
+		&.is-animating,
+		&.is-bottom {
+			transform: none;
+		}
+	}
+
+	@include respond-min($mq-lg) {
+		padding: $un-lg;
+	}
+
+	@include respond-min($mq-xl) {
+		padding: $un-xl;
+	}
+}
+
+.m-header__inner {
+	@include clearfix;
+}
+
+.m-header__logo {
+	float: left;
+	pointer-events: all;
+}
+
+.m-header__logo-mark {
+	vertical-align: middle;
+
+	@include respond-max($mq-lg) {
+		.is-nav-active &::after {
+			background-color: $co-white;
+		}
+	}
+}
+
+.m-header__logo-text {
+	@include respond-max($mq-sm) {
+		display: none;
+	}
+
+	@include respond-min($mq-sm) {
+		margin-left: $un-sm;
+		vertical-align: middle;
+	}
+}

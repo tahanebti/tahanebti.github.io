@@ -1,0 +1,73 @@
+/* ===========================================================
+
+	Base - Link
+
+=========================================================== */
+
+a {
+	color: inherit;
+	text-decoration: none;
+	transition: box-shadow $ut-speed $ut-timing-func-1;
+
+	&:focus {
+		box-shadow: 0 0 0 rem(4px) $co-green-1;
+		border-radius: $ut-radius;
+		outline: none;
+	}
+}
+
+.b-link {
+	&:link {
+		-webkit-tap-highlight-color: $co-selection;
+	}
+
+	.no-enhance & {
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.enhance & {
+		background-image: linear-gradient(to bottom, rgba($co-green-2, 0) 60%, $co-green-2 60%, $co-green-2 90%, rgba($co-green-2, 0) 90%);
+		background-repeat: no-repeat;
+	    background-size: 100% 100%;
+	    transition: box-shadow $ut-speed $ut-timing-func-1,
+					background-size $ut-speed * 1.5 $ut-timing-func-1;
+
+		&:hover {
+			.b-link__inner {
+				background-size: 100% 100%;
+			}
+		}
+	}
+}
+
+.b-link__inner {
+	background-image: linear-gradient(to bottom, rgba($co-green-1, 0) 60%, $co-green-1 60%, $co-green-1 90%, rgba($co-green-1, 0) 90%);
+	background-repeat: no-repeat;
+	background-size: 0% 100%;
+	transition: background-size $ut-speed $ut-timing-func-1;
+}
+
+.b-link--athens {
+	.enhance & {
+		background-image: linear-gradient(to bottom, rgba($co-green-2, 0) 65%, $co-green-2 65%, $co-green-2 85%, rgba($co-green-2, 0) 85%);
+
+		.b-link__inner {
+			background-image: linear-gradient(to bottom, rgba($co-green-1, 0) 65%, $co-green-1 65%, $co-green-1 85%, rgba($co-green-1, 0) 85%);
+		}
+	}
+}
+
+.b-link--sparta {
+	.enhance & {
+		background-image: linear-gradient(to bottom, rgba($co-green-2, 0) 80%, $co-green-2 80%, $co-green-2 95%, rgba($co-green-2, 0) 95%);
+
+		.b-link__inner {
+			background-image: linear-gradient(to bottom, rgba($co-green-1, 0) 80%, $co-green-1 80%, $co-green-1 95%, rgba($co-green-1, 0) 95%);
+			transition: background-size $ut-speed * 2 $ut-timing-func-1;
+		}
+	}
+}
